@@ -12,14 +12,7 @@ const gzipAsync = promisify(gzip);
 // Configuration
 const BUILD_COMMAND = "npm run build";
 const OUTPUT_FOLDER = "dist";
-const FILE_CATEGORIES = [
-  { name: "JavaScript", pattern: /\.js$/ },
-  { name: "CSS", pattern: /\.css$/ },
-  { name: "HTML", pattern: /\.html$/ },
-  { name: "Source Maps", pattern: /\.map$/ },
-  { name: "Images", pattern: /\.(png|jpg|jpeg|gif|svg|ico)$/i },
-  { name: "Fonts", pattern: /\.(woff|woff2|ttf|otf|eot)$/i },
-];
+const FILE_CATEGORIES = [{ name: "JavaScript", pattern: /\.js$/ }];
 
 interface FileStats {
   [category: string]: {
@@ -128,8 +121,11 @@ function formatBytes(bytes: number): string {
   if (bytes === 0) return "0 B";
   const k = 1024;
   const sizes = ["B", "KB", "MB", "GB"];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return `${(bytes / Math.pow(k, i)).toFixed(2)} ${sizes[i]}`;
+
+  let positiveBytes = Math.abs(bytes);
+  const i = Math.floor(Math.log(positiveBytes) / Math.log(k));
+  const msg = `${(positiveBytes / Math.pow(k, i)).toFixed(2)} ${sizes[i]}`;
+  return bytes < 0 ? `-${msg}` : msg;
 }
 
 function formatChange(
@@ -137,7 +133,7 @@ function formatChange(
   newSize: number,
 ): { bytes: string; percent: string } {
   const diff = newSize - oldSize;
-  const percent = oldSize === 0 ? 100 : (diff / oldSize) * 100;
+  const percent = oldSize === 0 ? 0 : (diff / oldSize) * 100;
 
   const bytesStr = diff > 0 ? `+${formatBytes(diff)}` : formatBytes(diff);
   const percentStr =
