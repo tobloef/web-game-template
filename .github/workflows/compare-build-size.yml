@@ -1,4 +1,4 @@
-name: Compare Build Size
+name: Compare build size
 
 on:
   pull_request:
@@ -10,6 +10,8 @@ permissions:
 
 jobs:
   compare-build-size:
+    name: Compare build size
+
     runs-on: ubuntu-latest
 
     steps:
