@@ -1,31 +1,28 @@
 {
-	"compilerOptions": {
-		/** General **/
-		"target": "ES2022",
-		"useDefineForClassFields": true,
-		"module": "ESNext",
-		"lib": ["ES2022", "DOM", "DOM.Iterable"],
-		"skipLibCheck": true,
+  "compilerOptions": {
+    /** General **/
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
 
-		/** Bundling **/
-		"moduleResolution": "bundler",
-		"allowImportingTsExtensions": true,
-		"verbatimModuleSyntax": true,
-		"moduleDetection": "force",
-		"noEmit": true,
-		"sourceMap": true,
+    /** Bundling **/
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "sourceMap": true,
 
-		/** Linting **/
-		"strict": true,
-		"noUnusedParameters": true,
-		"erasableSyntaxOnly": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUncheckedSideEffectImports": true,
-		"noUncheckedIndexedAccess": true,
-		"useUnknownInCatchVariables": false
-	},
-	"include": [
-		"src",
-		"tools"
-	]
+    /** Linting **/
+    "strict": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": false
+  },
+  "include": ["src", "tools"]
 }
