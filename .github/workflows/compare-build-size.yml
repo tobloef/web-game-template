@@ -27,9 +27,9 @@ jobs:
         run: npm ci
 
       - name: Run build size comparison
-        id: build-compare
+        id: compare-build
         run: |
-          node tools/build-size-compare.ts ${{ github.base_ref }} ${{ github.head_ref }}
+          node tools/compare-build-size.ts ${{ github.base_ref }} ${{ github.head_ref }}
         env:
           GITHUB_OUTPUT: ${{ github.output }}
 
