@@ -34,8 +34,7 @@ jobs:
 
       - name: Run build size comparison
         id: compare-build
-        run: |
-          node tools/compare-build-size.ts ${{ github.base_ref }} ${{ github.head_ref }}
+        run: node tools/compare-build-size.ts ${{ github.base_ref }} ${{ github.head_ref }}
         env:
           GITHUB_OUTPUT: ${{ github.output }}
 
