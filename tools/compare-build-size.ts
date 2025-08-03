@@ -137,7 +137,7 @@ function formatChange(
   newSize: number,
 ): { bytes: string; percent: string } {
   const diff = newSize - oldSize;
-  const percent = oldSize === 0 ? 100 : (diff / oldSize) * 100;
+  const percent = oldSize === 0 ? 0 : (diff / oldSize) * 100;
 
   const bytesStr = diff > 0 ? `+${formatBytes(diff)}` : formatBytes(diff);
   const percentStr =
