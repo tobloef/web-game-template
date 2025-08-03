@@ -12,14 +12,7 @@ const gzipAsync = promisify(gzip);
 // Configuration
 const BUILD_COMMAND = "npm run build";
 const OUTPUT_FOLDER = "dist";
-const FILE_CATEGORIES = [
-  { name: "JavaScript", pattern: /\.js$/ },
-  { name: "CSS", pattern: /\.css$/ },
-  { name: "HTML", pattern: /\.html$/ },
-  { name: "Source Maps", pattern: /\.map$/ },
-  { name: "Images", pattern: /\.(png|jpg|jpeg|gif|svg|ico)$/i },
-  { name: "Fonts", pattern: /\.(woff|woff2|ttf|otf|eot)$/i },
-];
+const FILE_CATEGORIES = [{ name: "JavaScript", pattern: /\.js$/ }];
 
 interface FileStats {
   [category: string]: {
