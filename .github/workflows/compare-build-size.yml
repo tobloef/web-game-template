@@ -1,0 +1,51 @@
+name: Compare Build Size
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  compare-build-size:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Need full history to checkout different branches
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ">=22.18.0"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run build size comparison
+        id: build-compare
+        run: |
+          node build-size-compare.ts ${{ github.base_ref }} ${{ github.head_ref }}
+        env:
+          GITHUB_OUTPUT: ${{ github.output }}
+
+      - name: Find existing comment
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: Build Size Comparison
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ${{ steps.build-compare.outputs.comparison }}
+          edit-mode: replace
