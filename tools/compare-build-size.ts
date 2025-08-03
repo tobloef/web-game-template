@@ -118,12 +118,14 @@ async function calculateBuildStats(outputPath: string): Promise<BuildStats> {
 }
 
 function formatBytes(bytes: number): string {
-  console.log(`Formatting bytes: ${bytes}`);
   if (bytes === 0) return "0 B";
   const k = 1024;
   const sizes = ["B", "KB", "MB", "GB"];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return `${(bytes / Math.pow(k, i)).toFixed(2)} ${sizes[i]}`;
+
+  let positiveBytes = Math.abs(bytes);
+  const i = Math.floor(Math.log(positiveBytes) / Math.log(k));
+  const msg = `${(positiveBytes / Math.pow(k, i)).toFixed(2)} ${sizes[i]}`;
+  return bytes < 0 ? `-${msg}` : msg;
 }
 
 function formatChange(
