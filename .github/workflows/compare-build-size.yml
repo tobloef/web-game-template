@@ -47,5 +47,5 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            ${{ steps.build-compare.outputs.comparison }}
+            ${{ steps.compare-build.outputs.comparison }}
           edit-mode: replace
