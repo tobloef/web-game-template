@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "target": "ESNext",
+    "module": "NodeNext",
+    "lib": [],
+    "types": ["@types/node"],
+    "moduleResolution": "NodeNext"
+  },
+  "include": ["tools/**/*.ts"]
+}

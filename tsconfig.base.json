@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    /** General **/
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+
+    /** Bundling **/
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "sourceMap": true,
+
+    /** Linting **/
+    "strict": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": false
+  }
+}
