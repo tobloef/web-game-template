@@ -1,0 +1,40 @@
+name: Run NPM script
+
+on:
+  workflow_call:
+    inputs:
+      command:
+        description: 'The NPM script to run (e.g., "format", "lint", "test")'
+        required: true
+        type: string
+      node-version:
+        description: 'Node.js version to use'
+        required: false
+        type: string
+        default: '>=22.18.0'
+
+permissions:
+  contents: write
+
+jobs:
+  run-command:
+    name: Run NPM script ${{ inputs.command }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Install dependencies
+        working-directory: '.'
+        run: npm ci
+
+      - name: Run NPM script
+        working-directory: '.'
+        continue-on-error: false
+        run: npm run ${{ inputs.command }}
