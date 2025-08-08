@@ -1,5 +1,5 @@
-import { Time as TimeClass } from "../lib/time";
-import { Input as InputClass } from "../lib/input";
+import { TimeManager } from "../lib/game-loop/time-manager";
+import { InputManager } from "../lib/input/input-manager";
 
-export const Time = new TimeClass();
-export const Input = new InputClass();
+export const Time = new TimeManager();
+export const Input = new InputManager();

@@ -8,10 +8,10 @@ on:
         required: true
         type: string
       node-version:
-        description: 'Node.js version to use'
+        description: "Node.js version to use"
         required: false
         type: string
-        default: '>=22.18.0'
+        default: ">=22.18.0"
 
 permissions:
   contents: write
@@ -20,7 +20,7 @@ jobs:
   run-command:
     name: Run NPM script ${{ inputs.command }}
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,10 +31,10 @@ jobs:
           node-version: ${{ inputs.node-version }}
 
       - name: Install dependencies
-        working-directory: '.'
+        working-directory: "."
         run: npm ci
 
       - name: Run NPM script
-        working-directory: '.'
+        working-directory: "."
         continue-on-error: false
         run: npm run ${{ inputs.command }}

@@ -1,13 +1,13 @@
-import { MILLISECONDS_PER_SECOND, type Seconds } from "./units/time";
+import { MILLISECONDS_PER_SECOND, type Seconds } from "../types/time";
 
-export type TimeOptions = {
-  real?: RealTimeOptions;
-  simulation?: SimulationTimeOptions;
+export type TimeManagerOptions = {
+  real?: RealTimeManagerOptions;
+  simulation?: SimulationTimeManagerOptions;
 };
 
-export class Time {
-  readonly real: RealTime;
-  readonly simulation: SimulationTime;
+export class TimeManager {
+  readonly real: RealTimeManager;
+  readonly simulation: SimulationTimeManager;
 
   /** How fast to run the simulation compared to real-time. */
   scale = 1;
@@ -15,9 +15,9 @@ export class Time {
   /** How much real time has passed since the last simulation update. */
   #unsimulatedRealTime: Seconds = 0 as Seconds;
 
-  constructor(options?: TimeOptions) {
-    this.real = new RealTime(options?.real);
-    this.simulation = new SimulationTime(options?.simulation);
+  constructor(options?: TimeManagerOptions) {
+    this.real = new RealTimeManager(options?.real);
+    this.simulation = new SimulationTimeManager(options?.simulation);
   }
 
   /**
@@ -62,11 +62,11 @@ export class Time {
   }
 }
 
-export type RealTimeOptions = {
+export type RealTimeManagerOptions = {
   maxDeltaTime?: Seconds;
 };
 
-class RealTime {
+class RealTimeManager {
   static DEFAULT_MAX_DELTA_TIME = (1 / 4) as Seconds;
 
   #isPaused: boolean = false;
@@ -77,8 +77,9 @@ class RealTime {
   #delta = 0 as Seconds;
   #leftOverFromPause = 0 as Seconds;
 
-  constructor(options?: RealTimeOptions) {
-    this.#maxDelta = options?.maxDeltaTime ?? RealTime.DEFAULT_MAX_DELTA_TIME;
+  constructor(options?: RealTimeManagerOptions) {
+    this.#maxDelta =
+      options?.maxDeltaTime ?? RealTimeManager.DEFAULT_MAX_DELTA_TIME;
   }
 
   get elapsed() {
@@ -158,11 +159,11 @@ class RealTime {
   }
 }
 
-export type SimulationTimeOptions = {
+export type SimulationTimeManagerOptions = {
   timestep?: Seconds;
 };
 
-class SimulationTime {
+class SimulationTimeManager {
   static DEFAULT_TIMESTEP = (1 / 60) as Seconds;
 
   timestep: Seconds;
@@ -171,8 +172,8 @@ class SimulationTime {
   #elapsed = 0 as Seconds;
   #delta = 0 as Seconds;
 
-  constructor(options?: SimulationTimeOptions) {
-    this.timestep = options?.timestep ?? SimulationTime.DEFAULT_TIMESTEP;
+  constructor(options?: SimulationTimeManagerOptions) {
+    this.timestep = options?.timestep ?? SimulationTimeManager.DEFAULT_TIMESTEP;
 
     if (this.timestep <= 0) {
       throw new Error("Simulation time step must be greater than 0.");

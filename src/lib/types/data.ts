@@ -1,4 +1,4 @@
-import type { Branded } from "../brand";
+import type { Branded } from "../utils/brand";
 
 export type Bits = Branded<number, "Bits">;
 export type Bytes = Branded<number, "Bytes">;

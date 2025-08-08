@@ -1,9 +1,9 @@
-import { Time } from "./time";
+import { TimeManager } from "./time-manager";
 
 export type GameLoopOptions = {
   onSimulate?: OnSimulateCallback;
   onRender?: OnRenderCallback;
-  time?: Time;
+  time?: TimeManager;
 };
 
 export type OnSimulateCallback = (deltaTime: number) => void | Promise<void>;
@@ -14,14 +14,14 @@ export class GameLoop {
 
   onSimulate?: OnSimulateCallback;
   onRender?: OnRenderCallback;
-  time: Time;
+  time: TimeManager;
 
   private runningPromise?: Promise<void>;
 
   constructor(options?: GameLoopOptions) {
     this.onSimulate = options?.onSimulate;
     this.onRender = options?.onRender;
-    this.time = options?.time ?? new Time();
+    this.time = options?.time ?? new TimeManager();
   }
 
   /**

@@ -1,4 +1,4 @@
-declare const __brand: unique symbol
+declare const __brand: unique symbol;
 
 export type Brand<Name extends string> = { [__brand]: Name };
 

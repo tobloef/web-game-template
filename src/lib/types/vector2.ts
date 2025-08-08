@@ -1,4 +1,4 @@
-import type { Float32, Uint32 } from "./units/data";
+import type { Float32, Uint32 } from "./data";
 
 export type Vector2<Type extends number = number> = {
   x: Type;

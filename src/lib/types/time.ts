@@ -1,4 +1,4 @@
-import type { Branded } from "../brand";
+import type { Branded } from "../utils/brand";
 
 export type Microseconds = Branded<number, "Microseconds">;
 export type Milliseconds = Branded<number, "Milliseconds">;

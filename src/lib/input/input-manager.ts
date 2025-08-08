@@ -1,14 +1,14 @@
-import type { KeyboardButton } from "./keyboard-buttons";
+import type { KeyboardButton } from "./keyboard-button";
 import {
   buttonNumberToMouseButton,
   MOUSE_BUTTONS,
   type MouseButton,
 } from "./mouse-button";
-import type { ReadonlyVector2, Vector2 } from "./vector2";
+import type { ReadonlyVector2, Vector2 } from "../types/vector2";
 
 export type Button = KeyboardButton | MouseButton;
 
-export class Input {
+export class InputManager {
   #consumedButtons = new Set<Button>();
   #justPressedButtons = new Set<Button>();
   #justReleasedButtons = new Set<Button>();
