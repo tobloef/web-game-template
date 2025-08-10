@@ -1,12 +1,12 @@
-import { Asset } from "../asset.js";
-import { FileLoadingError, loadTextFile } from "../../utils/load-file.js";
+import { Asset } from "../asset";
+import { FileLoadingError, loadTextFile } from "../../utils/load-file";
 import {
   ComputeShader,
   type ComputeShaderDescriptor,
   RenderShader,
   type RenderShaderDescriptor,
   ShaderParsingError,
-} from "../../types/shader.js";
+} from "../../types/shader";
 
 export class RenderShaderAsset extends Asset<RenderShaderDescriptor> {
   async load(): Promise<RenderShaderDescriptor> {

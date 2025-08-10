@@ -1,6 +1,6 @@
-import { Asset } from "../asset.js";
-import type { Texture } from "../../types/texture.js";
-import { FileLoadingError, loadBinaryFile } from "../../utils/load-file.js";
+import { Asset } from "../asset";
+import type { Texture } from "../../types/texture";
+import { FileLoadingError, loadBinaryFile } from "../../utils/load-file";
 
 export class TextureAsset extends Asset<Texture> {
   bitmap?: ImageBitmap;

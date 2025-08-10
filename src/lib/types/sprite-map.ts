@@ -1,5 +1,5 @@
-import { CustomError } from "../utils/custom-error.js";
-import type { Vector2 } from "./vector2.js";
+import { CustomError } from "../utils/custom-error";
+import type { Vector2 } from "./vector2";
 
 export type SpriteMapDescriptor = {
   spriteSize: Vector2;

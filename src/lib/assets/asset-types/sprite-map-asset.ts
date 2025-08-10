@@ -1,11 +1,11 @@
-import { Asset } from "../asset.js";
-import { FileLoadingError, loadBinaryFile } from "../../utils/load-file.js";
+import { Asset } from "../asset";
+import { FileLoadingError, loadBinaryFile } from "../../utils/load-file";
 import {
   createSpriteMap,
   type SpriteMap,
   type SpriteMapDescriptor,
   SpriteMapValidationError,
-} from "../../types/sprite-map.js";
+} from "../../types/sprite-map";
 
 export class SpriteMapAsset extends Asset<SpriteMap> {
   descriptor;

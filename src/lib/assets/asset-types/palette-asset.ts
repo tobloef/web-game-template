@@ -1,11 +1,11 @@
-import { Asset } from "../asset.js";
+import { Asset } from "../asset";
 
-import { FileLoadingError, loadBinaryFile } from "../../utils/load-file.js";
+import { FileLoadingError, loadBinaryFile } from "../../utils/load-file";
 import {
   extractPalette,
   type Palette,
   PaletteError,
-} from "../../types/palette.js";
+} from "../../types/palette";
 
 export class PaletteAsset extends Asset<Palette> {
   async load(): Promise<Palette> {
