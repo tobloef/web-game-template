@@ -24,7 +24,7 @@ export class RenderShaderAsset extends Asset<RenderShaderDescriptor> {
     const descriptor = shader.getDescriptor();
 
     if (descriptor instanceof ShaderParsingError) {
-      throw ShaderParsingError;
+      throw descriptor;
     }
 
     return descriptor;
@@ -47,7 +47,7 @@ export class ComputeShaderAsset extends Asset<ComputeShaderDescriptor> {
     const descriptor = shader.getDescriptor();
 
     if (descriptor instanceof ShaderParsingError) {
-      throw ShaderParsingError;
+      throw descriptor;
     }
 
     return descriptor;
