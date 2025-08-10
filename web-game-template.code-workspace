@@ -5,4 +5,82 @@
     },
   ],
   "settings": {},
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start",
+        "type": "shell",
+        "command": "npm run dev",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true,
+        },
+        "presentation": {
+          "revealProblems": "onProblem",
+          "clear": true,
+        },
+      },
+      {
+        "label": "Build",
+        "type": "shell",
+        "command": "npm run build",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true,
+        },
+        "presentation": {
+          "revealProblems": "onProblem",
+          "clear": true,
+        },
+      },
+      {
+        "label": "Preview",
+        "type": "shell",
+        "command": "npm run preview",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true,
+        },
+        "presentation": {
+          "revealProblems": "onProblem",
+          "clear": true,
+        },
+      },
+      {
+        "label": "Check",
+        "type": "shell",
+        "command": "npm run check",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true,
+        },
+        "presentation": {
+          "reveal": "silent",
+          "revealProblems": "onProblem",
+          "clear": true,
+          "close": true,
+          "showReuseMessage": false
+        },
+      },
+      {
+        "label": "Format",
+        "type": "shell",
+        "command": "npm run format",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true,
+        },
+        "presentation": {
+          "revealProblems": "onProblem",
+          "clear": true,
+        },
+      },
+    ],
+  },
 }
